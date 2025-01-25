@@ -1,6 +1,6 @@
 use eyre::{OptionExt, Result, WrapErr};
 use lettre::{AsyncSmtpTransport, Tokio1Executor};
-use minijinja::Environment;
+use minijinja::{AutoEscape, Environment};
 use tokio::fs;
 
 use crate::config::Config;
@@ -33,6 +33,8 @@ pub async fn read_templates(config: &Config) -> Result<Environment<'static>> {
 
         templates.add_template_owned(name.to_owned(), file_content)?;
     }
+
+    templates.set_auto_escape_callback(|_| AutoEscape::Html);
 
     Ok(templates)
 }
