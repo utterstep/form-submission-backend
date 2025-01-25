@@ -10,7 +10,7 @@ use eyre::WrapErr;
 use crate::{error::AppError, send_mail::send_mail, state::AppState};
 
 #[axum::debug_handler]
-#[tracing::instrument(skip(app_state, form))]
+#[tracing::instrument(skip(app_state, headers))]
 pub async fn handle_form(
     State(app_state): State<AppState>,
     Path(template_name): Path<String>,
