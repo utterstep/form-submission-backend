@@ -27,7 +27,7 @@ pub async fn handle_form(
 
     send_mail(
         app_state.mailer(),
-        "vstepanov@gradarius.com",
+        app_state.config().smtp_to(),
         app_state.config().smtp_from(),
         "New Lead",
         &rendered,

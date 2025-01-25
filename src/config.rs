@@ -10,6 +10,7 @@ pub struct ConfigInner {
     template_dir: PathBuf,
     smtp_connection_string: String,
     smtp_from: String,
+    smtp_to: String,
 }
 
 #[derive(Clone)]
