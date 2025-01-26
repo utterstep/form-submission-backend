@@ -40,5 +40,13 @@ pub async fn handle_form(
         .map(|r| r.to_str().unwrap_or("/"))
         .unwrap_or("/");
 
-    Ok(Redirect::to(referrer))
+    // return to referrer with a ?success=true added to the url,
+    // !! overriding any existing query params !!
+    let url = {
+        let mut url = url::Url::parse(referrer).wrap_err("Could not parse referrer")?;
+        url.set_query(Some("success=true"));
+        url
+    };
+
+    Ok(Redirect::to(url.as_str()))
 }

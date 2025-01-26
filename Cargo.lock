@@ -285,6 +285,7 @@ dependencies = [
  "tracing",
  "tracing-subscriber",
  "tracing-tree",
+ "url",
 ]
 
 [[package]]
