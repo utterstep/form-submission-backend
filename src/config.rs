@@ -3,6 +3,7 @@ use std::{ops::Deref, path::PathBuf, sync::Arc};
 use derive_getters::Getters;
 use eyre::{Result, WrapErr};
 use serde::{Deserialize, Serialize};
+use url::Url;
 
 #[derive(Debug, Serialize, Deserialize, Getters)]
 pub struct ConfigInner {
@@ -11,6 +12,7 @@ pub struct ConfigInner {
     smtp_connection_string: String,
     smtp_from: String,
     smtp_to: String,
+    forward_to: Option<Url>,
 }
 
 #[derive(Clone)]
